@@ -1,0 +1,50 @@
+.headerArea {
+  background: #1565d8;
+  position: relative;
+}
+
+.leftSide a {
+  color: white;
+  text-decoration: none;
+}
+
+.leftSide {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  padding: 1rem 0;
+}
+
+button.btn {
+  background: inherit;
+  color: white;
+  outline: none;
+  border: none;
+  padding: 1rem 1.5rem;
+  font-size: medium;
+  font-weight: 600;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all;
+  transition-duration: 0.5s;
+}
+
+/* .btn:hover {
+  background: transparent;
+  color: white;
+} */
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+  align-items: center;
+}
+.rightSide {
+  margin-left: auto;
+}
