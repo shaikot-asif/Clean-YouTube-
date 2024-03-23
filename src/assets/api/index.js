@@ -42,8 +42,6 @@ const getPlayList = async (playListId) => {
     };
   });
 
-  console.log(playlistItems);
-
   return {
     playListId,
     playlistItems,

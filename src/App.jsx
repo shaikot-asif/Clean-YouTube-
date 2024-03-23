@@ -1,22 +1,25 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import PlaylistCard from "./assets/component/card";
 import NavBar from "./assets/component/navBar";
 import usePlaylists from "./assets/hook/usePlaylists";
 
 const App = () => {
-  const [playlistLink, setPlaylistLink] = useState("");
-  const playlistIdOrLink = (data) => {
-    setPlaylistLink(data);
-  };
   const { getPlaylistById, playlists } = usePlaylists();
-
-  useEffect(() => {
-    getPlaylistById(playlistLink);
-  }, [playlistLink]);
 
   return (
     <div>
-      <NavBar playlistIdOrLink={playlistIdOrLink} />
+      <NavBar playlistIdOrLink={getPlaylistById} />
+      {/* {Object.values(playlists).map((item) => (
+        <PlaylistCard
+          key={item.playListId}
+          channelTitle={item.channelTitle}
+          playListId={item.playListId}
+          playlistTitle={item.playlistTitle}
+          playlistThumbnails={item.playlistThumbnails}
+        />
+      ))} */}
+      <PlaylistCard playlists={playlists} />
     </div>
   );
 };

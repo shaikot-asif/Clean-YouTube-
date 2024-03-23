@@ -13,7 +13,6 @@ const PlayListDialogForm = ({ handelClose, PlaylistIdOrLink, open }) => {
       setFocused(false);
     }
   }, [open]);
-  console.log(focused, "focused");
   const handelFocus = () => {
     setFocused(true);
   };
