@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import PlayListDialogForm from "../dialog";
 import classes from "./navBar.module.css";
+import { Link } from "react-router-dom";
 
 const NavBar = ({ playlistIdOrLink }) => {
   const [open, setOpen] = useState(false);
@@ -18,10 +19,12 @@ const NavBar = ({ playlistIdOrLink }) => {
         <div className={`${classes.container} ${classes.wrapper}`}>
           <div className={classes.leftSide}>
             <h2 className="textLogo">
-              <a href="/">Clean Youtube</a>
+              <Link to="/">Clean Youtube</Link>
             </h2>
             <span className="learner">
-              <a href="/">Stack Learner</a>
+              <a href="https://www.stacklearner.com" target="_blank">
+                Stack Learner
+              </a>
             </span>
           </div>
           <div className={`${classes.rightSide}`}>

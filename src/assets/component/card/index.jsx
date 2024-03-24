@@ -1,15 +1,15 @@
 import React from "react";
 import Classes from "./card.module.css";
+import { Link } from "react-router-dom";
 
 import { FaRegPlayCircle, FaHeart } from "react-icons/fa";
-import { CiHeart } from "react-icons/ci";
 
 const PlaylistCard = ({ playlists }) => {
   return (
     <div>
       <section className={Classes.cardSection}>
-        {Object.values(playlists).map((item) => (
-          <div className={Classes.cardItem}>
+        {Object.values(playlists).map((item, index) => (
+          <div key={index} className={Classes.cardItem}>
             <img
               src={item.playlistThumbnails.url}
               className="playlistThumbnail"
@@ -32,10 +32,13 @@ const PlaylistCard = ({ playlists }) => {
                     <button className={Classes.heartIcon}>
                       <FaHeart />
                     </button>
-                    <button>
-                      Start tutorial
-                      <FaRegPlayCircle />
-                    </button>
+
+                    <Link to={`/player/${item.playListId}`}>
+                      <button>
+                        Start tutorial
+                        <FaRegPlayCircle />
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>

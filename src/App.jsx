@@ -1,8 +1,10 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import PlaylistCard from "./assets/component/card";
 import NavBar from "./assets/component/navBar";
+import { Routes, Route } from "react-router-dom";
 import usePlaylists from "./assets/hook/usePlaylists";
+import HomePage from "./assets/component/pages/HomePage";
+import NotFoundPage from "./assets/component/pages/NotFoundPage";
+import PlayerPage from "./assets/component/pages/PlayerPage";
 
 const App = () => {
   const { getPlaylistById, playlists } = usePlaylists();
@@ -10,16 +12,14 @@ const App = () => {
   return (
     <div>
       <NavBar playlistIdOrLink={getPlaylistById} />
-      {/* {Object.values(playlists).map((item) => (
-        <PlaylistCard
-          key={item.playListId}
-          channelTitle={item.channelTitle}
-          playListId={item.playListId}
-          playlistTitle={item.playlistTitle}
-          playlistThumbnails={item.playlistThumbnails}
+      <Routes>
+        <Route path="/" element={<HomePage playlists={playlists} />} />
+        <Route
+          path="/player/:playlistId"
+          element={<PlayerPage playlists={playlists} />}
         />
-      ))} */}
-      <PlaylistCard playlists={playlists} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </div>
   );
 };
