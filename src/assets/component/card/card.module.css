@@ -44,3 +44,33 @@
 .contentArea {
   padding: 1rem;
 }
+
+.cardTitleBtn {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.cardTitleBtn button {
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  font-size: 16px;
+  margin-top: 1rem;
+}
+
+.cardBtn {
+  align-self: self-end;
+  display: flex;
+  gap: 1.5rem;
+  font-size: 16px;
+}
+
+.cardBtn .heartIcon {
+  font-size: 18px;
+}

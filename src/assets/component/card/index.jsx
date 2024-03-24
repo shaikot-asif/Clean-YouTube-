@@ -1,6 +1,9 @@
 import React from "react";
 import Classes from "./card.module.css";
 
+import { FaRegPlayCircle, FaHeart } from "react-icons/fa";
+import { CiHeart } from "react-icons/ci";
+
 const PlaylistCard = ({ playlists }) => {
   return (
     <div>
@@ -22,9 +25,18 @@ const PlaylistCard = ({ playlists }) => {
                       : item.playlistTitle}
                   </h3>
                 </div>
-                <div>
+                <div className={Classes.cardTitleBtn}>
                   <h4>{item.channelTitle}</h4>
-                  <button>Start tutorial</button>
+
+                  <div className={Classes.cardBtn}>
+                    <button className={Classes.heartIcon}>
+                      <FaHeart />
+                    </button>
+                    <button>
+                      Start tutorial
+                      <FaRegPlayCircle />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
