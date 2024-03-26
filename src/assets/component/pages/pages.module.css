@@ -1,0 +1,14 @@
+/* PlayerPage */
+.playerPageWrapper {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  flex-direction: row-reverse;
+  gap: 1rem;
+}
+
+.videoContent {
+}
+
+.videoContentThumbnail {
+}
