@@ -4,11 +4,11 @@ import PlayListDialogForm from "../dialog";
 import classes from "./navBar.module.css";
 import { Link } from "react-router-dom";
 
-const NavBar = ({ playlistIdOrLink }) => {
+const NavBar = ({ getPlaylist }) => {
   const [open, setOpen] = useState(false);
 
   const PlaylistIdOrLink = (data) => {
-    playlistIdOrLink(data);
+    getPlaylist(data);
   };
   const handelClose = () => {
     setOpen(!open);

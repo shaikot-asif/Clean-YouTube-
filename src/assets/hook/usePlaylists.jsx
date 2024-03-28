@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import getPlayList from "../api";
-import storage from "../utils/Storate";
+import storage from "../utils/Storag/Storage";
 const init = {
   playlists: {},
   recentPlayLists: [],
