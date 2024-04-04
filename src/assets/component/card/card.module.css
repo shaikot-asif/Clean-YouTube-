@@ -1,6 +1,6 @@
 .cardSection {
   width: 80%;
-  margin: 5rem auto 0px auto;
+  margin: 10rem auto 5rem auto;
   display: flex;
   flex-direction: row;
   gap: 5px;
@@ -73,4 +73,13 @@
 
 .cardBtn .heartIcon {
   font-size: 18px;
+}
+
+.heartIconFalse {
+  color: red !important;
+  font-size: 18px;
+}
+
+.link {
+  text-decoration: none;
 }

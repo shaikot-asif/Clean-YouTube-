@@ -14,6 +14,12 @@ const PlayerPage = ({ playlists }) => {
   };
   const [state, setState] = useState(INIT_STATE);
 
+  const [des, setDes] = useState(false);
+
+  const handelClick = () => {
+    setDes(!des);
+  };
+
   const onClickHandel = (data) => {
     setState({
       videoId: data.contentDetails.videoId,
@@ -27,18 +33,28 @@ const PlayerPage = ({ playlists }) => {
   return (
     <div>
       <div className={Classes.playerPageWrapper}>
-        <div>
-          <YouTube videoId={state.videoId} />
-          <h4>{state.title}</h4>
-          <p>{state.description}</p>
-        </div>
         <div className={Classes.videoContent}>
           {playlists[playlistId].playlistItems.map((item) => (
-            <div key={item.title} className={Classes.videoContentThumbnail}>
-              <h5 onClick={() => onClickHandel(item)}>{item.title}</h5>
+            <div
+              key={item.title}
+              onClick={() => onClickHandel(item)}
+              className={`${Classes.videoContentThumbnail} ${
+                item.contentDetails.videoId == state.videoId && Classes.focus
+              }`}
+            >
+              <h5>{item.title}</h5>
               <img src={item.thumbnails.url} alt="" />
             </div>
           ))}
+        </div>
+        <div className={Classes.video}>
+          <YouTube videoId={state.videoId} />
+          <h4>{state.title}</h4>
+          <p>
+            {des ? state.description : state.description.substr(0, 150) + "..."}
+            {"  "}
+            <span onClick={handelClick}>{des ? "Show Less" : "Show More"}</span>
+          </p>
         </div>
       </div>
     </div>

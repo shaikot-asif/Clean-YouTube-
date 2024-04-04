@@ -1,6 +1,9 @@
 .headerArea {
   background: #1565d8;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .leftSide a {
@@ -47,4 +50,23 @@ button.btn {
 }
 .rightSide {
   margin-left: auto;
+}
+
+.navMenu {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+
+.navMenu li {
+  text-decoration: none;
+  list-style: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.navMenu a {
+  text-decoration: none;
+  color: white;
 }

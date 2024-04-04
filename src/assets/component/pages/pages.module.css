@@ -2,13 +2,55 @@
 .playerPageWrapper {
   display: flex;
   width: 90%;
-  margin: 0 auto;
-  flex-direction: row-reverse;
-  gap: 1rem;
+  margin: 10rem auto 0 auto;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-bottom: 5rem;
+  overflow: hidden;
 }
 
 .videoContent {
+  width: 50%;
+  height: 60vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+.focus {
+  background: rgba(0, 0, 0, 0.218);
 }
 
 .videoContentThumbnail {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 1rem;
+  align-items: center;
+  cursor: pointer;
+}
+.videoContentThumbnail h5 {
+  padding-left: 5px;
+}
+.videoContentThumbnail img {
+  width: 30%;
+}
+.video {
+  width: 50%;
+}
+
+.video h4,
+.video p {
+  padding-top: 1rem;
+  width: 100%;
+}
+.video iframe {
+  width: 100%;
+}
+.video span {
+  cursor: pointer;
+  font-weight: 600;
 }

@@ -28,9 +28,17 @@ const NavBar = ({ getPlaylist }) => {
             </span>
           </div>
           <div className={`${classes.rightSide}`}>
-            <button onClick={handelClose} className={classes.btn}>
-              Add Playlist
-            </button>
+            <ul className={classes.navMenu}>
+              <li>
+                <Link to="/favourite">Favourite</Link>
+              </li>
+              <li>
+                <Link to="/recent">Recent</Link>
+              </li>
+              <li onClick={handelClose} className={classes.btn}>
+                Add Playlist
+              </li>
+            </ul>
           </div>
         </div>
       </div>
