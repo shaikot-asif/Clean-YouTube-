@@ -8,6 +8,7 @@ import PlayerPage from "./assets/component/pages/PlayerPage";
 import { useStoreState, useStoreActions, action } from "easy-peasy";
 import FavouritePage from "./assets/component/pages/FavouritePage";
 import RecentPage from "./assets/component/pages/RecentPage";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   // const { getPlaylistById, playlists } = usePlaylists();
@@ -18,6 +19,7 @@ const App = () => {
   return (
     <div>
       <NavBar getPlaylist={getPlaylist} />
+      <Toaster position="top-center" />
       <Routes>
         <Route path="/" element={<HomePage playlists={data} />} />
         <Route
@@ -25,7 +27,7 @@ const App = () => {
           element={<PlayerPage playlists={data} />}
         />
         <Route path="/favourite" element={<FavouritePage data={data} />} />
-        <Route path="/recent" element={<RecentPage />} />
+        <Route path="/recent" element={<RecentPage data={data} />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>

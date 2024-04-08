@@ -2,27 +2,34 @@ import React from "react";
 import Classes from "./card.module.css";
 import { Link } from "react-router-dom";
 import { FaRegPlayCircle, FaHeart } from "react-icons/fa";
+import { toast } from "react-hot-toast";
 import { useStoreState } from "easy-peasy";
-import { useState } from "react";
-const PlaylistCardItem = ({ item, removeFavourite, addFavourite }) => {
-  const [favBtn, setFavBtn] = useState(
-    JSON.parse(localStorage.getItem(`favourite-${item.playListId}`)) === true
-  );
+import { IoMdRemoveCircleOutline } from "react-icons/io";
 
-  console.log("favBtn:", favBtn);
+const PlaylistCardItem = ({
+  item,
+  removeFavourite,
+  addFavourite,
+  deletePlaylist,
+  isDelete = true,
+}) => {
+  const { items } = useStoreState((state) => state.favourite);
+
+  const isFab = items.filter((pId) => pId === item.playListId);
   const handleClick = () => {
-    const isFavBtn = !favBtn;
-    setFavBtn(isFavBtn);
-    localStorage.setItem(
-      `favourite-${item.playListId}`,
-      JSON.stringify(isFavBtn)
-    );
-    if (!favBtn) {
+    if (isFab[0] === item.playListId) {
+      removeFavourite(isFab[0]);
+      toast.success("delete to favourite");
+    } else {
       addFavourite(item.playListId);
+      toast.success("Add to favourite");
     }
-    if (favBtn) {
-      removeFavourite(item.playListId);
-    }
+  };
+
+  const deletePlaylistHandle = () => {
+    deletePlaylist(item.playListId);
+    removeFavourite(item.playListId);
+    toast.success("Remove playlist");
   };
 
   return (
@@ -53,20 +60,30 @@ const PlaylistCardItem = ({ item, removeFavourite, addFavourite }) => {
             <div className={Classes.cardBtn}>
               <button
                 key={item.playListId}
-                className={`${
-                  !favBtn ? Classes.heartIcon : Classes.heartIconFalse
-                }`}
                 onClick={handleClick}
+                className={`${
+                  isFab[0] !== item.playListId
+                    ? Classes.heartIcon
+                    : Classes.heartIconFalse
+                }`}
               >
                 <FaHeart />
               </button>
 
               <Link className={Classes.link} to={`/player/${item.playListId}`}>
                 <button>
-                  Start tutorial
+                  {/* Start tutorial */}
                   <FaRegPlayCircle />
                 </button>
               </Link>
+              {isDelete && (
+                <button
+                  className={Classes.heartIcon}
+                  onClick={deletePlaylistHandle}
+                >
+                  <IoMdRemoveCircleOutline />
+                </button>
+              )}
             </div>
           </div>
         </div>

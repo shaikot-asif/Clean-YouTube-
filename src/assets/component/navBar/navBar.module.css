@@ -48,6 +48,7 @@ button.btn {
   justify-items: center;
   align-items: center;
 }
+
 .rightSide {
   margin-left: auto;
 }
@@ -69,4 +70,22 @@ button.btn {
 .navMenu a {
   text-decoration: none;
   color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .leftSide {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  .rightSide {
+    margin-left: 0;
+  }
+  .navMenu li {
+    font-size: 14px;
+  }
 }

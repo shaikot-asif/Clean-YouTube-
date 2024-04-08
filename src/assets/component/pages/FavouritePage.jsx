@@ -18,6 +18,7 @@ const FavouritePage = ({ data }) => {
           item={data[item]}
           addFavourite={addFavourite}
           removeFavourite={removeFavourite}
+          isDelete={false}
         />
       ))}
     </div>

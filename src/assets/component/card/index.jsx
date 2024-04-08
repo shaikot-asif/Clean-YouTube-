@@ -3,10 +3,11 @@ import Classes from "./card.module.css";
 import { useStoreActions } from "easy-peasy";
 
 const PlaylistCard = ({ playlists }) => {
-  console.log(playlists, "from playlistcard");
   const { addFavourite, removeFavourite } = useStoreActions(
     (actions) => actions.favourite
   );
+
+  const { deletePlaylist } = useStoreActions((action) => action.playlists);
 
   return (
     <div>
@@ -17,6 +18,7 @@ const PlaylistCard = ({ playlists }) => {
             key={item.playListId}
             addFavourite={addFavourite}
             removeFavourite={removeFavourite}
+            deletePlaylist={deletePlaylist}
           />
         ))}
       </section>

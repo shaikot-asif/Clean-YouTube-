@@ -78,3 +78,22 @@
   text-transform: uppercase;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 768px) {
+  .formLabel {
+    top: 45%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .formWrapper {
+    width: 95%;
+    padding: 10px;
+  }
+  .formWrapper p {
+    font-size: 12px;
+  }
+  .formBtnWrapper {
+    justify-content: center;
+  }
+}

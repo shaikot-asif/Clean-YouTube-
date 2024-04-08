@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import YouTube from "react-youtube";
 import Classes from "./pages.module.css";
+import { useStoreActions } from "easy-peasy";
 
 const PlayerPage = ({ playlists }) => {
   const { playlistId } = useParams();
@@ -16,6 +17,9 @@ const PlayerPage = ({ playlists }) => {
 
   const [des, setDes] = useState(false);
 
+  const { addRecent } = useStoreActions((actions) => actions.recent);
+  addRecent(playlistId);
+
   const handelClick = () => {
     setDes(!des);
   };
@@ -27,8 +31,6 @@ const PlayerPage = ({ playlists }) => {
       description: data.description,
     });
   };
-
-  console.log(playlists[playlistId]);
 
   return (
     <div>
@@ -43,7 +45,7 @@ const PlayerPage = ({ playlists }) => {
               }`}
             >
               <h5>{item.title}</h5>
-              <img src={item.thumbnails.url} alt="" />
+              <img src={item.thumbnails?.url} alt="" />
             </div>
           ))}
         </div>

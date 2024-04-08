@@ -1,4 +1,4 @@
-import { action, persist, thunk } from "easy-peasy";
+import { action, persist } from "easy-peasy";
 
 const favouriteModel = persist(
   {
