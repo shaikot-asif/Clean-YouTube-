@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import YouTube from "react-youtube";
@@ -13,9 +13,15 @@ const PlayerPage = ({ playlists }) => {
     title: firstVideo.title,
     description: firstVideo.description,
   };
+
   const [state, setState] = useState(INIT_STATE);
 
   const [des, setDes] = useState(false);
+  const [videoCount, setVideoCount] = useState({ length: 0, videoNo: 0 });
+
+  useEffect(() => {
+    setVideoCount({ length: playlists[playlistId].playlistItems.length });
+  }, [playlistId]);
 
   const { addRecent } = useStoreActions((actions) => actions.recent);
   addRecent(playlistId);
@@ -35,6 +41,9 @@ const PlayerPage = ({ playlists }) => {
   return (
     <div>
       <div className={Classes.playerPageWrapper}>
+        <div>
+          <span>{videoCount.length}</span>
+        </div>
         <div className={Classes.videoContent}>
           {playlists[playlistId].playlistItems.map((item) => (
             <div

@@ -11,7 +11,7 @@
 }
 
 .videoContent {
-  width: 50%;
+  width: 40%;
   height: 60vh;
   overflow-y: auto;
   display: flex;
@@ -31,9 +31,12 @@
   gap: 1rem;
   align-items: center;
   cursor: pointer;
+  justify-content: flex-end;
 }
 .videoContentThumbnail h5 {
   padding-left: 5px;
+  font-size: 12px;
+  font-weight: 500;
 }
 .videoContentThumbnail img {
   width: 30%;
@@ -46,6 +49,7 @@
 .video p {
   padding-top: 1rem;
   width: 100%;
+  font-size: 12px;
 }
 .video iframe {
   width: 100%;
@@ -53,4 +57,51 @@
 .video span {
   cursor: pointer;
   font-weight: 600;
+}
+
+.pageNotFound {
+  margin: 15rem auto 0px auto;
+  text-align: center;
+  color: #1565d8;
+}
+
+@media only screen and (max-width: 768px) {
+  .playerPageWrapper {
+    flex-direction: column-reverse;
+  }
+  .video {
+    width: 100%;
+  }
+  .videoContent {
+    width: 100%;
+    margin-top: 2rem;
+  }
+}
+
+/*Footer Area*/
+
+.footerArea {
+  background: #0d2436;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 8rem;
+}
+
+.footerArea p {
+  font-size: 14px;
+  color: #1565d8;
+}
+
+.footerArea ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 18px;
+  padding-top: 2px;
+}
+
+.footerArea ul li a {
+  color: white;
 }

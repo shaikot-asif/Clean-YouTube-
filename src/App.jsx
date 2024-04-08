@@ -9,6 +9,7 @@ import { useStoreState, useStoreActions, action } from "easy-peasy";
 import FavouritePage from "./assets/component/pages/FavouritePage";
 import RecentPage from "./assets/component/pages/RecentPage";
 import { Toaster } from "react-hot-toast";
+import FooterPage from "./assets/component/pages/FooterPage";
 
 const App = () => {
   // const { getPlaylistById, playlists } = usePlaylists();
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/recent" element={<RecentPage data={data} />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <FooterPage />
     </div>
   );
 };
