@@ -18,7 +18,10 @@ const FooterPage = () => {
             </a>
           </li>
           <li>
-            <a href="/" target="_blank">
+            <a
+              href="https://www.linkedin.com/in/shaikotahmedasif/"
+              target="_blank"
+            >
               <FaLinkedin />
             </a>
           </li>

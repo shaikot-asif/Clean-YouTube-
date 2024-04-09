@@ -13,15 +13,24 @@ const PlayerPage = ({ playlists }) => {
     title: firstVideo.title,
     description: firstVideo.description,
   };
-
   const [state, setState] = useState(INIT_STATE);
-
   const [des, setDes] = useState(false);
-  const [videoCount, setVideoCount] = useState({ length: 0, videoNo: 0 });
+  const [videoCount, setVideoCount] = useState({
+    length: 0,
+    videoNo: 0,
+    playlistTitle: "",
+  });
 
   useEffect(() => {
-    setVideoCount({ length: playlists[playlistId].playlistItems.length });
-  }, [playlistId]);
+    const currentVideoPosition = playlists[playlistId].playlistItems.findIndex(
+      (item) => item.contentDetails.videoId === state.videoId
+    );
+    setVideoCount({
+      length: playlists[playlistId].playlistItems.length,
+      videoNo: currentVideoPosition + 1,
+      playlistTitle: playlists[playlistId].playlistTitle,
+    });
+  }, [playlistId, state.videoId]);
 
   const { addRecent } = useStoreActions((actions) => actions.recent);
   addRecent(playlistId);
@@ -39,12 +48,14 @@ const PlayerPage = ({ playlists }) => {
   };
 
   return (
-    <div>
-      <div className={Classes.playerPageWrapper}>
-        <div>
-          <span>{videoCount.length}</span>
+    <div className={Classes.playerPageWrapper}>
+      <div className={Classes.videoContent}>
+        <div className={Classes.videoCount}>
+          <h4>{videoCount.playlistTitle}</h4>
+          <span>{videoCount.videoNo + "/" + videoCount.length}</span>
         </div>
-        <div className={Classes.videoContent}>
+
+        <div className={Classes.videoItem}>
           {playlists[playlistId].playlistItems.map((item) => (
             <div
               key={item.title}
@@ -58,15 +69,15 @@ const PlayerPage = ({ playlists }) => {
             </div>
           ))}
         </div>
-        <div className={Classes.video}>
-          <YouTube videoId={state.videoId} />
-          <h4>{state.title}</h4>
-          <p>
-            {des ? state.description : state.description.substr(0, 150) + "..."}
-            {"  "}
-            <span onClick={handelClick}>{des ? "Show Less" : "Show More"}</span>
-          </p>
-        </div>
+      </div>
+      <div className={Classes.video}>
+        <YouTube videoId={state.videoId} />
+        <h4>{state.title}</h4>
+        <p>
+          {des ? state.description : state.description.substr(0, 150) + "..."}
+          {"  "}
+          <span onClick={handelClick}>{des ? "Show Less" : "Show More"}</span>
+        </p>
       </div>
     </div>
   );
